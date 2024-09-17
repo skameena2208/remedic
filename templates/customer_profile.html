@@ -1,0 +1,55 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+    <div class="hero-wrap" style="background-image: url({% static 'images/bg_6.jpg' %}); background-attachment:fixed;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Blog</span></p>
+            <h1 class="mb-3 bread">Profile Details</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+            <div class="m-3">
+            <table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Pincode</th>
+        <th>Image</th>
+        <th>Update</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{x.name}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.mobile}}</td>
+        <td>{{x.gender}}</td>
+        <td>{{x.address}}</td>
+        <td>{{x.pincode}}</td>
+        <td>{{x.image}}</td>
+        <td>
+        <a href="{% url 'edit' %}">update</a>
+        </td>
+        <td>{{x.status}}</td>
+
+        <td><a href="{% url 'customer' %}">DeActive</a></td>
+        </tr>
+    </tbody>
+
+</table><br></br>
+          </div>
+
+
+
+{% include "footer.html" %}

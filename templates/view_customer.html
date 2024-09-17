@@ -1,0 +1,59 @@
+
+{% load static %}
+{% include "admin_header.html" %}
+    <div class="hero-wrap" style="background-image: url({% static 'images/bg_6.jpg' %}); background-attachment:fixed;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Blog</span></p>
+            <h1 class="mb-3 bread">Details</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+            <div class="m-3">
+            <table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Pincode</th>
+        <th>Image</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    {% for x in customer %}
+    <tbody>
+    <tr>
+        <td>{{x.name}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.mobile}}</td>
+        <td>{{x.gender}}</td>
+        <td>{{x.address}}</td>
+        <td>{{x.pincode}}</td>
+        <td>{{x.image}}</td>
+        <td>{{x.status}}</td>
+        <td>{% if x.status == 'pending' %}
+              <a href="{% url 'accept_customer' id=x.id %}" class="btn btn-success" >Accept</a> <br><br>
+              <a class="btn btn-danger" href="{% url 'reject_customer' id=x.id %}">Reject</a>
+              {% elif x.status == 'Accepted' %}
+              <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Accepted</button>
+              {% else %}
+              <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+            {% endif %}</td>
+        </tr>
+    </tbody>
+                {% endfor %}
+
+    </table><br></br>
+            </div>
+
+
+
+{% include "footer.html" %}

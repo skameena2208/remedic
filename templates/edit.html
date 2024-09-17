@@ -1,0 +1,94 @@
+{% load static %}
+{% include "customer_header.html" %}
+    <div class="hero-wrap" style="background-image: url({% static 'images/bg_6.jpg' %}); background-attachment:fixed;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Blog</span></p>
+            <h1 class="mb-3 bread">Update your profile</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <section class="ftco-section contact-section ftco-degree-bg">
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+        </div>
+        <div class="row block-9">
+          <div class="col-md-6 pr-md-5">
+            <h2>{{msg}}</h2>
+            <form method="post" action="{% url 'update' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <h2>Register now</h2>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" name="name" value="{{x.name}}" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Email" name="email" value="{{x.email}}" required>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="Enter phone number" name="mobile" value="{{x.mobile}}" required>
+              </div>
+              <div class="form-group">
+
+                  <select name="gender" class="form-control">
+                    <option value="-1" >select gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="others">Others</option>
+                  </select>
+
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Address" value="{{x.address}}" name="address" required>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="id" value="{{x.id}}" name="id" required>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="pincode"  value="{{x.pincode}}" name="pincode" required>
+              </div>
+              <div class="form-group">
+                <input type="file" class="form-control" name="image" value="{{x.image}}" required>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+
+          </div>
+
+          <div class="col-md-6" id="map"></div>
+        </div>
+      </div>
+    </section>
+
+		<section class="ftco-section-parallax">
+      <div class="parallax-img d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+              <h2>Subcribe to our Newsletter</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+              <div class="row d-flex justify-content-center mt-5">
+                <div class="col-md-8">
+                  <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                      <input type="text" class="form-control" placeholder="Enter email address">
+                      <input type="submit" value="Subscribe" class="submit px-3">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% include "footer.html" %}
